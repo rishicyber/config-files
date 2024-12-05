@@ -54,8 +54,8 @@ nnoremap <C-k> :m .-2<CR>==
 " move visiually selected lines up or down in normal mode
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
-" run currently opened python file, exe needed to remove outside windows
-nnoremap <leader>r :!python.exe %<CR>
+" force-save and run currently opened python file, exe needed to remove outside windows
+nnoremap <leader>r :w!<CR>:!python.exe %<CR>
 
 
 " #### COLORSCHEME #### 
