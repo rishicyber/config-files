@@ -35,7 +35,10 @@ autocmd vimenter * NERDTree | wincmd p
 autocmd BufEnter * if winnr('$') == 1 && bufname() =~ 'NERD_tree_' | quit | endif
 
 
-
+" Enable timeout for key sequences
+set timeout
+" Set the timeout length to 500 milliseconds (adjustable)
+set ttimeoutlen=1000
 " become god User
 let mapleader = " "
 nnoremap <leader>w :w<CR>
@@ -51,6 +54,8 @@ nnoremap <C-k> :m .-2<CR>==
 " move visiually selected lines up or down in normal mode
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+" run currently opened python file, exe needed to remove outside windows
+nnoremap <leader>r :!python.exe %<CR>
 
 
 " #### COLORSCHEME #### 
