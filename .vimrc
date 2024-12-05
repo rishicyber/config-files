@@ -78,6 +78,35 @@ Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 
+" ##############  SHOW LAST YANKED OR DELETED I.E. "0 VALUE IN LIGHTLINE ##############
 
+function! LastYankDelete()
+  " Get the current filename
+
+  " Check if the register has content
+  if !empty(@")
+    let text = printf("BUFFER : %s", substitute(@", '\n', ' ', 'g'))
+  elseif !empty(@0)
+    let text = printf("BUFFER : %s", substitute(@0, '\n', ' ', 'g'))
+  else
+    let text = "No text"
+  endif
+
+  " Truncate the text to 60 characters
+  return strpart(text, 0, 60)
+endfunction
+
+
+
+let g:lightline = {
+  \ 'colorscheme': 'wombat',
+  \ 'active': {
+    \ 'left': [ ['mode', 'paste'], ['filename', 'modified', 'last_yank_delete'] ]
+    \ },
+  \ 'component_function': {
+    \ 'last_yank_delete': 'LastYankDelete'
+    \ },
+  \ }
+" #######################################################################################
 
 
